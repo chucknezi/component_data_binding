@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, SimpleChanges, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, SimpleChanges, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -18,6 +18,7 @@ OnDestroy
 {
   @Input('srvElement') element: {type:string, name:string, content:string};
   @Input() name: string;
+  @ViewChild('heading') header: ElementRef;
 
   constructor() { 
     console.log('constructor')
@@ -31,6 +32,7 @@ OnDestroy
 
   ngOnInit(): void {
     console.log('ngOnInit Called');
+    console.log(this.header.nativeElement.textContent);
   }
 
   ngDoCheck(){
